@@ -1,22 +1,12 @@
 using Godot;
 using System;
 
-public partial class Character : Sprite2D
+public partial class CharacterBody2d : CharacterBody2D
 {
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+	public override void _PhysicsProcess(double delta)
 	{
-		CharacterMovement();
-	}
-
-	public void CharacterMovement()
-	{
-		float steps = 10;
+		float steps = 4;
 		if (Input.IsKeyPressed(Key.W))
 		{
 			this.Position += new Vector2(0, -steps);
@@ -25,15 +15,16 @@ public partial class Character : Sprite2D
 		if (Input.IsKeyPressed(Key.S))
 		{
 			this.Position += new Vector2(0, steps);
+
 		}
 		if (Input.IsKeyPressed(Key.A))
 		{
 			this.Position += new Vector2(-steps, 0);
+
 		}
 		if (Input.IsKeyPressed(Key.D))
 		{
 			this.Position += new Vector2(steps, 0);
 		}
-
 	}
 }
